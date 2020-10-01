@@ -1,0 +1,13 @@
+image: ddgg/net_2020:build_v1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - dotnetcore
+          - node
+        script:
+          - dotnet build
+          - dotnet test --logger junit --settings .ci/coverletArgs.runsettings
+          - .ci/check_coverage.sh
+          - .ci/collect_reports.sh

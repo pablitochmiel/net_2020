@@ -1,0 +1,29 @@
+ARG FROM
+
+FROM $FROM
+
+USER root
+
+RUN apt-get update \ 
+ && apt-get install -y git sqlite3 libicu66 \
+ && rm -rf /var/lib/apt/lists/*
+
+USER ${IMAGE_USER}
+WORKDIR /home/${IMAGE_USER}
+
+RUN wget https://dot.net/v1/dotnet-install.sh \
+ && chmod +x dotnet-install.sh \
+ && ./dotnet-install.sh --version 3.1.402 \
+ && rm dotnet-install.sh
+
+RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+ENV NVM_DIR /home/${IMAGE_USER}/.nvm
+ENV NODE_VERSION v12.18.3
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
+
+ENV NODE_PATH="$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules"
+ENV PATH="$NVM_DIR/versions/node/$NODE_VERSION/bin:/home/${IMAGE_USER}/.dotnet:$PATH"
+
+RUN dotnet dev-certs https
+
+CMD ["bash"]
