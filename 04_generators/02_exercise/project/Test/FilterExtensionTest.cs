@@ -5,7 +5,7 @@ using Xunit;
 namespace Test
 {
     public class FilterExtensionTest
-    {/*
+    {
         [Fact]
         public void FilersEvenNumbers()
         {
@@ -50,6 +50,6 @@ namespace Test
             Assert.Empty(input.Even());
             Assert.Empty(input.Odd());
             Assert.Empty(input.Only(1));
-        }*/
+        }
     }
 }

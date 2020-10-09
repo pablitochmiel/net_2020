@@ -27,7 +27,7 @@ namespace App
             Console.WriteLine();
 
             var fibonacci = new Fibonacci();
-/*
+
             foreach (var number in fibonacci.Numbers().Even().Only(times))
             {
                 Console.WriteLine(number);
@@ -39,7 +39,7 @@ namespace App
             {
                 Console.WriteLine(number);
             }
-*/
+
             Console.WriteLine();
         }
     }
