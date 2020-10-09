@@ -8,14 +8,14 @@ namespace Test
         [Fact]
         public void HashSetStringBasicOperations()
         {
-            // TODO: ...
+            var hashSet = new HashSet<string> {"A", "B", "C"};
 
             Assert.Equal(3, hashSet.Count);
             Assert.Contains("A", hashSet);
             Assert.Contains("B", hashSet);
             Assert.Contains("C", hashSet);
 
-            // TODO: ...
+            hashSet.Remove("A");
 
             Assert.Equal(2, hashSet.Count);
             Assert.DoesNotContain("A", hashSet);
@@ -26,21 +26,21 @@ namespace Test
         [Fact]
         public void HashSetStringIsCommonPart()
         {
-            // TODO: ...
+            var hashSetA = new HashSet<string> {"A", "B", "C"};
 
             Assert.Equal(3, hashSetA.Count);
             Assert.Contains("A", hashSetA);
             Assert.Contains("B", hashSetA);
             Assert.Contains("C", hashSetA);
 
-            // TODO: ...
+            var hashSetB = new HashSet<string> {"A", "B", "F"};
 
             Assert.Equal(3, hashSetB.Count);
             Assert.Contains("A", hashSetB);
             Assert.Contains("B", hashSetB);
             Assert.Contains("F", hashSetB);
 
-            // TODO: ...
+            hashSetA.Remove("C");
 
             Assert.Equal(2, hashSetA.Count);
             Assert.Contains("A", hashSetA);
@@ -55,7 +55,10 @@ namespace Test
         [Fact]
         public void HashSetStringIsSubsetOfOtherSet()
         {
-            // TODO: ...
+            var hashSetSubset = new HashSet<string>{"a","b","c"};
+            var hashSetSuperset = new HashSet<string>(hashSetSubset);
+            hashSetSuperset.Add("d");
+            hashSetSuperset.Add("e");
 
             Assert.Equal(5, hashSetSuperset.Count);
             Assert.Equal(3, hashSetSubset.Count);

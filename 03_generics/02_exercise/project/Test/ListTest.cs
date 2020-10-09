@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using Xunit;
 
 namespace Test
@@ -8,7 +9,7 @@ namespace Test
         [Fact]
         public void ListOfIntHasSometimesHigherCapacityThanCount()
         {
-            // TODO: ...
+            var list = new List<int> {1};
 
             Assert.Single(list);
             Assert.Equal(4, list.Capacity);
@@ -17,13 +18,13 @@ namespace Test
         [Fact]
         public void ListOfIntHasSometimesTheSameSizeAndCapacity()
         {
-            // TODO: ...
+            var listOne = new List<int> {1,2,3,4};
 
             Assert.Equal(4, listOne.Count);
             Assert.Equal(4, listOne.Capacity);
 
-            // TODO: ...
-
+            var listTwo=new List<int>{1,2};
+            
             Assert.Equal(2, listTwo.Count);
             Assert.Equal(4, listTwo.Capacity);
         }
@@ -31,22 +32,22 @@ namespace Test
         [Fact]
         public void ListOfIntSometimesGrowsCapacityAfterAdd()
         {
-            // TODO: ...
-
+            var list = new List<int> {1, 2};
+            
             Assert.Equal(2, list.Count);
             Assert.Equal(4, list.Capacity);
 
-            // TODO: ...
+            list.Add(3);
 
             Assert.Equal(3, list.Count);
             Assert.Equal(4, list.Capacity);
-
-            // TODO: ...
+            
+            list.Add(4);
 
             Assert.Equal(4, list.Count);
             Assert.Equal(4, list.Capacity);
 
-            // TODO: ...
+            list.Add(5);
 
             Assert.Equal(5, list.Count);
             Assert.Equal(8, list.Capacity);
@@ -55,7 +56,7 @@ namespace Test
         [Fact]
         public void ListOfStringCanBeCreatedInOneLine()
         {
-            // TODO: ...
+            var list = new List<string> {"Foo", "Bar", "Baz"};
 
             Assert.Equal(3, list.Count);
             Assert.Equal("Foo", list[0]);
@@ -66,7 +67,7 @@ namespace Test
         [Fact]
         public void ListOfStringCanBeSortedWithCustomComparators()
         {
-            // TODO: ...
+            var list = new List<string> {"EC","FB","GA","AG","BF","CE","DD"};
             
             Assert.Equal(7, list.Count);
             Assert.Equal("EC", list[0]);
@@ -76,8 +77,8 @@ namespace Test
             Assert.Equal("BF", list[4]);
             Assert.Equal("CE", list[5]);
             Assert.Equal("DD", list[6]);
-            
-            // TODO: ...
+
+            list.Sort((a, b) => a[1].CompareTo(b[1]));
             
             Assert.Equal(7, list.Count);
             Assert.Equal("GA", list[0]);
@@ -88,7 +89,7 @@ namespace Test
             Assert.Equal("BF", list[5]);
             Assert.Equal("AG", list[6]);
             
-            // TODO: ...
+            list.Sort();
             
             Assert.Equal(7, list.Count);
             Assert.Equal("AG", list[0]);
