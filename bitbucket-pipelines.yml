@@ -11,4 +11,3 @@ pipelines:
           - dotnet test --logger junit --settings .ci/coverletArgs.runsettings
           - .ci/check_coverage.sh
           - .ci/collect_reports.sh
-
