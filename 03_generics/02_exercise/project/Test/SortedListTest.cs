@@ -1,16 +1,23 @@
+using System.Collections;
 using System.Collections.Generic;
 using Xunit;
 
 namespace Test
 {
     public class SortedListTest
-    {/*
-        // TODO: ReversedComparer class...
+    {
+        private class ReversedComparer:IComparer<int>
+        {
+            public int Compare(int a, int b)
+            {
+                return b.CompareTo(a);
+            }
+        }
 
         [Fact]
         public void SortedListOfIntToStringIsSortedByKey()
         {
-            // TODO: ...
+            var list = new SortedList<int, string> {{0, "C"},{2,"B"},{1,"A"}};
 
             Assert.Equal(3, list.Count);
 
@@ -30,7 +37,7 @@ namespace Test
         [Fact]
         public void SortedListOfIntToStringWithCustomComparer()
         {
-            // TODO: ...
+            var list = new SortedList<int, string> (new ReversedComparer()){{0, "C"},{1,"A"},{2,"B"}};
 
             Assert.IsType<ReversedComparer>(list.Comparer);
             
@@ -47,6 +54,6 @@ namespace Test
             Assert.Equal("B", list.Values[0]);
             Assert.Equal("A", list.Values[1]);
             Assert.Equal("C", list.Values[2]);
-        }*/
+        }
     }
 }

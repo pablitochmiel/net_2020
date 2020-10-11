@@ -66,23 +66,23 @@ namespace Test
             Assert.Equal(2, dictionary[1]);
             Assert.Equal(4, dictionary[3]);
         }
-/*
+
         [Fact]
         public void DictionaryOfStringToStringThrowsWheKeyNotInDictionary()
         {
-            // TODO: ...
+            var dictionary=new Dictionary<string,string>{{"A","B"}};
 
             Assert.Single(dictionary);
             Assert.Equal("B", dictionary["A"]);
 
             void AccessElement()
             {
-                // TODO: ...
+                var unused = dictionary["C"];
             }
 
             Assert.Throws<KeyNotFoundException>(AccessElement);
 
-            // TODO: ...
+            dictionary.Add("C","A");
             
             Assert.Equal(2, dictionary.Count);
 
@@ -92,19 +92,19 @@ namespace Test
         [Fact]
         public void DictionaryOfStringToStringThrowsWhenAddedElementExists()
         {
-            // TODO: ...
+            var dictionary=new Dictionary<string,string>{{"A","B"}};
 
             Assert.Single(dictionary);
             Assert.Equal("B", dictionary["A"]);
 
             void AddElement()
             {
-                // TODO: ...
+                dictionary.Add("A","C");
             }
 
             Assert.Throws<ArgumentException>(AddElement);
 
-            // TODO: ...
+            dictionary.Remove("A");
 
             Assert.Empty(dictionary);
 
@@ -112,6 +112,6 @@ namespace Test
             
             Assert.Single(dictionary);
             Assert.Equal("C", dictionary["A"]);
-        }*/
+        }
     }
 }

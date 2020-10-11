@@ -56,9 +56,7 @@ namespace Test
         public void HashSetStringIsSubsetOfOtherSet()
         {
             var hashSetSubset = new HashSet<string>{"a","b","c"};
-            var hashSetSuperset = new HashSet<string>(hashSetSubset);
-            hashSetSuperset.Add("d");
-            hashSetSuperset.Add("e");
+            var hashSetSuperset = new HashSet<string>(hashSetSubset) {"d", "e"};
 
             Assert.Equal(5, hashSetSuperset.Count);
             Assert.Equal(3, hashSetSubset.Count);

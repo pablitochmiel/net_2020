@@ -4,21 +4,23 @@ using Xunit;
 namespace Test
 {
     public class StackTest
-    {/*
+    {
         [Fact]
         public void StackOfIntBasicOperations()
         {
-            // TODO: ...
+            var stack=new Stack<int>();
 
             Assert.Empty(stack);
             
-            // TODO: ...
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
 
             Assert.Equal(3, stack.Count);
             
             int Next()
             {
-                // TODO: ...
+                return stack.Pop();
             }
 
             Assert.Equal(3, stack.Count);
@@ -31,6 +33,6 @@ namespace Test
 
             Assert.Equal(1, Next());
             Assert.Empty(stack);
-        }*/
+        }
     }
 }
