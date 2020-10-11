@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Utils;
+using Utils;
 using Xunit;
 
 namespace Test
 {
     public class CollectionTest
-    {/*
+    {
         [Fact]
         public void CapacityByDefaultGrowsByTwoStartingFromOne()
         {
@@ -116,6 +116,6 @@ namespace Test
 
             Assert.Equal(0, collection.Count);
             Assert.Equal(4, collection.Capacity);
-        }*/
+        }
     }
 }
