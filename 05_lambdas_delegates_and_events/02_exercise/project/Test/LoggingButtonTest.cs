@@ -14,9 +14,10 @@ namespace Test
             var mock =new Mock<TextWriter>();
             Console.SetOut(mock.Object);
 
-            mock.Setup(ts => ts.WriteLine("Clicked 'TEST'"));
+            mock.Setup(ts => ts.WriteLine("Clicked 'TEST'")).Verifiable();
             var loggingButton=new LoggingButton("TEST");
             loggingButton.Click();
+            mock.Verify();
         }
     }
 }
