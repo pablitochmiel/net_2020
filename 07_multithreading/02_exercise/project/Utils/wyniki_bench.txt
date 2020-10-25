@@ -1,0 +1,25 @@
+odpalone na virtualce z dostępem do 2 procesorów:
+
+ Bench.dll                                         | Metric   | Unit | Iterations | Average | STDEV.S |     Min |     Max
+:------------------------------------------------- |:-------- |:----:|:----------:| -------:| -------:| -------:| -------:
+ Bench.DemoBench.Sum                               | Duration | msec |    1000    |   7.865 |   0.569 |   7.544 |  16.414
+ Bench.DemoBench.SumForeach                        | Duration | msec |    1000    |   5.898 |   0.992 |   5.430 |  19.431
+ Bench.DemoBench.SumLinq                           | Duration | msec |     22     | 472.026 |  11.968 | 461.810 | 512.636
+ Bench.DemoBench.SumPoolThreads(threads: 2)        | Duration | msec |    1000    |   6.258 |   1.992 |   4.018 |  19.460
+ Bench.DemoBench.SumPoolThreads(threads: 4)        | Duration | msec |    1000    |   6.628 |   2.177 |   3.969 |  24.015
+ Bench.DemoBench.SumPoolThreads(threads: 8)        | Duration | msec |    1000    |   6.572 |   1.972 |   4.023 |  21.998
+ Bench.DemoBench.SumThreads(threads: 2)            | Duration | msec |    1000    |   9.904 |   2.291 |   8.169 |  40.840
+ Bench.DemoBench.SumThreads(threads: 4)            | Duration | msec |    815     |  12.258 |   2.443 |   8.325 |  27.851
+ Bench.DemoBench.SumThreads(threads: 8)            | Duration | msec |    597     |  16.748 |   4.007 |   8.623 |  35.583
+ Bench.DemoBench.SumThreadsInterlocked(threads: 2) | Duration | msec |     45     | 225.797 |  63.005 |  91.132 | 306.062
+ Bench.DemoBench.SumThreadsInterlocked(threads: 4) | Duration | msec |     45     | 222.671 |  58.710 |  99.429 | 299.795
+ Bench.DemoBench.SumThreadsInterlocked(threads: 8) | Duration | msec |     47     | 215.482 |  45.225 | 117.872 | 286.438
+ Bench.DemoBench.SumTpl                            | Duration | msec |     87     | 115.252 |   9.363 | 106.022 | 151.630
+
+
+1 foreach jest szybsze niż for, bo nie sprawdzamy wartości zmiennej i, tylko odrazu zmiennej z tablicy,
+2 nie mam pojęcia czemu linq jest takie wolne (może chodzi o sporą liczbę odwołań), skoro metoda sum wywołuje foreach (sprawdziłem niedowierzając w wynik),
+3 pula wątków jest szybsza od wątków ze wzgłedu na lepszą synchronizacje wyników wątkow,
+4 interlocked jest cudowne bo działa, ale robi to wolno,
+5 ze wzgledu na niewielką liczbę procesorów, zwiększanie liczby wątków nie pomaga, a czasem nawet przeszkadza,
+6 tlp szału nie robi (wydaje mi się że powód jest w pkt 5, wydaje mi się też, że mogły dobrze zadziałać na danych wielowymiarowych).
